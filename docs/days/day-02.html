@@ -1,1 +1,91 @@
+<section class="slide" data-day="2" data-title="Toggle Controls" id="day-02">
+  <div class="slide-inner">
+    <div class="slide-label">Day 2</div>
+    <h2>Day 2 — Toggle Controls</h2>
+
+    <p><em>`Debugging` `Input` `Conditionals`</em></p>
+
+    <div class="subheading">Aim</div>
+    <p>
+      Explore how to detect when a value changes from one frame to the next.
+      This is an important early skill for avoiding unnecessary logging and reacting only when state actually changes.
+    </p>
+
+    <hr class="divider" />
+
+    <div class="subheading">Objectives / Pseudocode Breakdown</div>
+    <ul>
+      <li>1. Make a new script called <code>ToggleSwitch.cs</code> and attach it to any GameObject.</li>
+      <li>
+        2. Create and initialise two booleans: <code>isActive</code> and <code>previousIsActive</code>.
+        <pre class="language-csharp"><code class="language-csharp">bool isActive = false;         // Current state
+bool previousIsActive = false; // State from last frame</code></pre>
+      </li>
+      <li>
+        3. Inside <code>Update()</code>, use the space key to flip <code>isActive</code>.
+        <ul>
+          <li>Use [1] <code>Input.GetKeyDown(KeyCode.Space)</code></li>
+          <li>Remember: if a bool does not equal itself, the new value is the opposite (<code>isActive = !isActive;</code>).</li>
+        </ul>
+      </li>
+      <li>4. Check if the value has changed since last frame (<code>isActive != previousIsActive</code>).</li>
+      <li>5. Log a message only when the value changes.
+        <ul>
+          <li>If true → “Activated”</li>
+          <li>If false → “Deactivated”</li>
+        </ul>
+      </li>
+      <li>6. Update <code>previousIsActive</code> at the end to match the new value.</li>
+    </ul>
+
+    <div class="subheading">Hints</div>
+    <ul>
+      <li>
+        Hint 1: Don’t worry if it feels like you have a lot of <code>if</code> statements at first.
+        Early scripts often look this way until you learn more compact patterns.
+      </li>
+      <li>
+        Hint 2: A common pattern for detecting change is comparing the current value
+        with a stored value from the previous frame:
+        <code>if (current != previous) { /* something changed */ }</code>
+      </li>
+    </ul>
+
+    <hr class="divider" />
+
+    <div class="subheading">Did I Get It Right?</div>
+    <ul>
+      <li>Pressing the spacebar should toggle the value of <code>isActive</code>.</li>
+      <li>
+        You should see one log line each time the value flips:
+        <ul>
+          <li>“Activated” when switching to true</li>
+          <li>“Deactivated” when switching back to false</li>
+        </ul>
+      </li>
+      <li>You should <strong>not</strong> see any console spam when the value is not changing.</li>
+    </ul>
+
+    <div class="subheading">Unity API Links</div>
+    <ul>
+      <li>[1] <code>Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li>[2] <code>KeyCode</code> — <a href="https://docs.unity3d.com/ScriptReference/KeyCode.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li>[3] <code>Debug.Log</code> — <a href="https://docs.unity3d.com/ScriptReference/Debug.Log.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+    </ul>
+
+    <div class="tags">
+      <span class="tag tag--blue">Input</span>
+      <span class="tag">Debugging</span>
+      <span class="tag">Conditionals</span>
+      <span class="tag">Booleans</span>
+    </div>
+
+    <div class="slide-footer">
+      <div class="pager">
+        <a href="#day-01"><span>‹</span>Prev</a>
+      </div>
+      <span>Slide 3 · Day 2</span>
+    </div>
+  </div>
+</section>
 
