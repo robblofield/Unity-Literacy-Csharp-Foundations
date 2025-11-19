@@ -64,8 +64,3 @@ Combine:
   *(A mini full-system)*
 
 ---
-
-
-### ✔ A staff-teaching guide explaining the pedagogy behind the sequence
-
-Which would you like to tackle next?
