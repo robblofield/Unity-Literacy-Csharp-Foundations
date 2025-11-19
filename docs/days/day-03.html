@@ -1,0 +1,116 @@
+```html
+<section class="slide" data-day="3" data-title="Health & Mana Tracker" id="day-03">
+  <div class="slide-inner">
+    <!-- Top label (small text at very top) -->
+    <div class="slide-label">Day 3</div>
+
+    <!-- Main slide title -->
+    <h1>Health and Mana Tracker</h1>
+
+    <!-- Optional topic tags (2–4 max is ideal) -->
+    <div class="tags">
+      <span class="tag tag--pink">Variables &amp; Data</span>
+      <span class="tag tag--blue">Debugging</span>
+      <span class="tag">Mathf</span>
+    </div>
+
+    <!-- Aim -->
+    <div class="subheading">Aim</div>
+    <p>
+      Create a simple health and mana tracker using integers and log their values to the Console.
+      By the end of this task, you should understand how to store, change, and safely clamp numeric data in a script.
+    </p>
+
+    <hr class="divider" />
+
+    <!-- Objectives / Pseudocode Breakdown -->
+    <div class="subheading">Objectives / Pseudocode Breakdown</div>
+    <ul>
+      <li>1. Make a new script called <code>HealthManaTracker.cs</code> and attach it to an empty GameObject in the scene.</li>
+      <li>
+        2. Declare and initialise integer fields for max and current health and mana.
+        <pre class="language-csharp"><code class="language-csharp">int maxHealth = 100;
+int currentHealth = 100;
+int maxMana = 50;
+int currentMana = 50;</code></pre>
+      </li>
+      <li>
+        3. In <code>Start()</code>, print a summary of your starting values to the Console.
+        <ul>
+          <li>Include both current and max values, for example: <code>HP: 100/100 | MP: 50/50</code>.</li>
+        </ul>
+      </li>
+      <li>
+        4. In <code>Update()</code>, respond to a couple of key presses to change these values.
+        <ul>
+          <li>One key to apply damage (reduce health) and one to heal (increase health).</li>
+          <li>One key to spend mana and one to restore mana.</li>
+          <li>Use <code>[1]</code> <code>Input.GetKeyDown(KeyCode.X)</code> style checks so each key press only applies once.</li>
+        </ul>
+      </li>
+      <li>
+        5. After changing any value, clamp <code>currentHealth</code> and <code>currentMana</code> so they stay between 0 and their max values.
+        <ul>
+          <li>Use <code>[2]</code> <code>Mathf.Clamp</code> to keep values in range.</li>
+        </ul>
+      </li>
+      <li>
+        6. Log the updated summary to the Console whenever a change happens.
+        <ul>
+          <li>Use a single formatted line like <code>HP: currentHealth/maxHealth | MP: currentMana/maxMana</code>.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Hints -->
+    <div class="subheading">Hints</div>
+    <ul>
+      <li>
+        Hint 1: Use <code>int</code> for whole-number values like health and mana.
+        If you find yourself repeating the same summary <code>Debug.Log</code> code, consider putting it in a separate method and calling it after each change.
+      </li>
+      <li>
+        Hint 2: <code>Mathf.Clamp(value, min, max)</code> returns a new value that is forced into the given range.
+        A typical pattern is:
+        <code>currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);</code>
+      </li>
+    </ul>
+
+    <hr class="divider" />
+
+        <!-- right-aligned demo image or GIF -->
+    <aside class="demo-media">
+      <img src="media/day03-health-mana.gif" alt="Console showing health and mana values updating as keys are pressed" />
+      <p class="demo-caption">
+        The Console prints a compact HP/MP summary each time you apply damage, heal, spend, or restore mana.
+      </p>
+    </aside>
+
+    <!-- Did I Get It Right? -->
+    <div class="subheading">Did I Get It Right?</div>
+    <ul>
+      <li>Pressing your chosen keys should change health and mana values in sensible steps.</li>
+      <li>
+        The Console should show:
+        <ul>
+          <li>A starting line like <code>HP: 100/100 | MP: 50/50</code> when you enter Play mode.</li>
+          <li>One new line each time you press a key that changes health or mana.</li>
+          <li>No values dropping below 0 or going above their max values, no matter how many times you press the keys.</li>
+        </ul>
+      </li>
+    </ul>
+
+
+
+    <!-- Unity API Links -->
+    <div class="subheading">Unity API Links</div>
+    <ul>
+      <li><code>[1] Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>[2] Mathf.Clamp</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Debug.Log</code> — <a href="https://docs.unity3d.com/ScriptReference/Debug.Log.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>MonoBehaviour.Start</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>MonoBehaviour.Update</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Update.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+    </ul>
+  </div>
+</section>
+```
