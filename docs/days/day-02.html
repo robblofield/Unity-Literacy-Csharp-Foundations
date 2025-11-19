@@ -1,14 +1,27 @@
 <section class="slide" data-day="2" data-title="Toggle Controls" id="day-02">
   <div class="slide-inner">
+    <!-- Top label (small text at very top) -->
     <div class="slide-label">Day 2</div>
+
+    <!-- Main slide title -->
     <h1>Toggle Controls</h1>
 
+    <!-- Optional topic tags (2–4 max is ideal) -->
     <div class="tags">
       <span class="tag tag--pink">Debugging</span>
       <span class="tag tag--blue">Input</span>
       <span class="tag">Conditionals</span>
     </div>
 
+    <!-- OPTIONAL: right-aligned demo image or GIF -->
+    <aside class="demo-media">
+      <img src="images/default-screen-grab.gif" alt="Demo preview of today's task" />
+      <p class="demo-caption">
+        A look at how your toggle state updates only when the value changes.
+      </p>
+    </aside>
+
+    <!-- Aim -->
     <div class="subheading">Aim</div>
     <p>
       Explore how to detect when a value changes from one frame to the next.
@@ -17,6 +30,7 @@
 
     <hr class="divider" />
 
+    <!-- Objectives / Pseudocode Breakdown -->
     <div class="subheading">Objectives / Pseudocode Breakdown</div>
     <ul>
       <li>1. Make a new script called <code>ToggleSwitch.cs</code> and attach it to any GameObject.</li>
@@ -43,6 +57,7 @@ bool previousIsActive = false; // State from last frame</code></pre>
       <li>6. Update <code>previousIsActive</code> at the end to match the new value.</li>
     </ul>
 
+    <!-- Hints -->
     <div class="subheading">Hints</div>
     <ul>
       <li>
@@ -58,6 +73,7 @@ bool previousIsActive = false; // State from last frame</code></pre>
 
     <hr class="divider" />
 
+    <!-- Did I Get It Right? -->
     <div class="subheading">Did I Get It Right?</div>
     <ul>
       <li>Pressing the spacebar should toggle the value of <code>isActive</code>.</li>
@@ -71,6 +87,7 @@ bool previousIsActive = false; // State from last frame</code></pre>
       <li>You should <strong>not</strong> see any console spam when the value is not changing.</li>
     </ul>
 
+    <!-- Unity API Links -->
     <div class="subheading">Unity API Links</div>
     <ul>
       <li><code>Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
