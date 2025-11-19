@@ -45,13 +45,13 @@ int currentMana = 50;</code></pre>
         <ul>
           <li>One key to apply damage (reduce health) and one to heal (increase health).</li>
           <li>One key to spend mana and one to restore mana.</li>
-          <li>Use <code>[1]</code> <code>Input.GetKeyDown(KeyCode.X)</code> style checks so each key press only applies once.</li>
+          <li>Use <code></code> <code>Input.GetKeyDown(KeyCode.X)</code> style checks so each key press only applies once.</li>
         </ul>
       </li>
       <li>
         5. After changing any value, clamp <code>currentHealth</code> and <code>currentMana</code> so they stay between 0 and their max values.
         <ul>
-          <li>Use <code>[2]</code> <code>Mathf.Clamp</code> to keep values in range.</li>
+          <li>Use <code></code> <code>Mathf.Clamp</code> to keep values in range.</li>
         </ul>
       </li>
       <li>
@@ -105,8 +105,8 @@ int currentMana = 50;</code></pre>
     <!-- Unity API Links -->
     <div class="subheading">Unity API Links</div>
     <ul>
-      <li><code>[1] Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
-      <li><code>[2] Mathf.Clamp</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Mathf.Clamp</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
       <li><code>Debug.Log</code> — <a href="https://docs.unity3d.com/ScriptReference/Debug.Log.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
       <li><code>MonoBehaviour.Start</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
       <li><code>MonoBehaviour.Update</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Update.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
