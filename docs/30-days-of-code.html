@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>30 Days of Coding in Unity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- RaRa theme CSS (the file you already downloaded) -->
+  <link rel="stylesheet" href="assets/rara-games-devtools.css" />
+
+  <!-- Prism.js for syntax highlighting (C#, etc.) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-main">
+          <div class="brand-dot"></div>
+          <span>RaRa • Game Dev</span>
+        </div>
+        <div class="brand-course">30 Days of Coding in Unity</div>
+      </div>
+      <div class="global-nav">
+        <button class="ghost-btn" type="button" onclick="scrollToTop()">
+          <span class="icon">↑</span>
+          Top
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle contents menu">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer navigation (contents menu) -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-inner">
+      <div class="drawer-header">
+        <h3>Contents</h3>
+        <button class="drawer-close" type="button" aria-label="Close menu" onclick="toggleDrawer(false)">✕</button>
+      </div>
+      <ul class="drawer-list" id="drawerList">
+        <!-- Populated dynamically from JS once slides are loaded -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slides container (we inject sections into here) -->
+  <main>
+    <div id="slides"></div>
+  </main>
+
+  <!-- Floating prev/next nav -->
+  <div class="floating-nav">
+    <button type="button" id="prevBtn" onclick="jumpSlide(-1)">‹ Prev</button>
+    <button type="button" id="nextBtn" onclick="jumpSlide(1)">Next ›</button>
+  </div>
+
+  <script>
+    // Prism autoloader config – pulls language components (inc. C#) from CDN
+    if (window.Prism && Prism.plugins && Prism.plugins.autoloader) {
+      Prism.plugins.autoloader.languages_path = "https://cdn.jsdelivr.net/npm/prismjs@1/components/";
+    }
+
+    // --- Slide registry ------------------------------------------------------
+    // When you add new days, just append to this list and create a matching
+    // partial HTML file in docs/days/.
+    const dayDefinitions = [
+      { day: 0, slug: "intro", title: "Overview", file: "days/intro.html" },
+      { day: 1, slug: "day-01", title: "Print Your First Message", file: "days/day-01.html" },
+      { day: 2, slug: "day-02", title: "Toggle Controls", file: "days/day-02.html" },
+      // Add more like:
+      // { day: 3, slug: "day-03", title: "Some Title", file: "days/day-03.html" },
+    ];
+
+    const slidesContainer = document.getElementById("slides");
+    const drawer = document.getElementById("drawer");
+    const drawerList = document.getElementById("drawerList");
+    const menuToggle = document.getElementById("menuToggle");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let slides = [];
+
+    // --- Loading & composition ----------------------------------------------
+
+    async function loadSlides() {
+      for (const def of dayDefinitions) {
+        try {
+          const res = await fetch(def.file);
+          if (!res.ok) {
+            console.warn("Failed to load slide file:", def.file);
+            continue;
+          }
+          const html = await res.text();
+          const template = document.createElement("template");
+          template.innerHTML = html.trim();
+
+          const section = template.content.firstElementChild;
+          if (!section) continue;
+
+          // Ensure required attributes / ids exist
+          if (!section.classList.contains("slide")) {
+            section.classList.add("slide");
+          }
+
+          if (!section.id) {
+            section.id = def.slug;
+          }
+
+          if (!section.dataset.day) {
+            section.dataset.day = def.day;
+          }
+
+          if (!section.dataset.title) {
+            section.dataset.title = def.title;
+          }
+
+          slidesContainer.appendChild(section);
+        } catch (err) {
+          console.error("Error loading slide", def, err);
+        }
+      }
+
+      slides = Array.from(document.querySelectorAll(".slide"));
+
+      buildDrawer();
+      updateButtons(0);
+
+      // After the DOM has the code blocks, trigger Prism
+      if (window.Prism && Prism.highlightAll) {
+        Prism.highlightAll();
+      }
+    }
+
+    function buildDrawer() {
+      drawerList.innerHTML = "";
+
+      slides.forEach((slide) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `#${slide.id}`;
+        a.onclick = () => toggleDrawer(false);
+
+        const indexSpan = document.createElement("span");
+        indexSpan.className = "index";
+        indexSpan.textContent = slide.dataset.day === "0" ? "Intro" : `Day ${slide.dataset.day}`;
+
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = slide.dataset.title || "";
+
+        a.appendChild(indexSpan);
+        a.appendChild(titleSpan);
+        li.appendChild(a);
+        drawerList.appendChild(li);
+      });
+    }
+
+    // --- Navigation helpers --------------------------------------------------
+
+    function currentSlideIndex() {
+      const scrollY = window.scrollY;
+      let closestIndex = 0;
+      let closestDist = Infinity;
+
+      slides.forEach((slide, index) => {
+        const rect = slide.getBoundingClientRect();
+        const offset = rect.top + window.scrollY;
+        const dist = Math.abs(offset - scrollY);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    }
+
+    function jumpSlide(direction) {
+      if (!slides.length) return;
+
+      const idx = currentSlideIndex();
+      const targetIndex = idx + direction;
+      if (targetIndex < 0 || targetIndex >= slides.length) return;
+
+      slides[targetIndex].scrollIntoView({ behavior: "smooth" });
+      updateButtons(targetIndex);
+    }
+
+    function updateButtons(idx) {
+      if (!slides.length) return;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === slides.length - 1;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      updateButtons(0);
+    }
+
+    // --- Drawer (hamburger menu) --------------------------------------------
+
+    function toggleDrawer(force) {
+      const shouldOpen =
+        typeof force === "boolean" ? force : !drawer.classList.contains("open");
+      drawer.classList.toggle("open", shouldOpen);
+      menuToggle.classList.toggle("open", shouldOpen);
+    }
+
+    menuToggle.addEventListener("click", () => toggleDrawer());
+
+    drawer.addEventListener("click", (e) => {
+      if (e.target === drawer) toggleDrawer(false);
+    });
+
+    // --- Scroll listener to keep buttons in sync ----------------------------
+
+    window.addEventListener("scroll", () => {
+      const idx = currentSlideIndex();
+      updateButtons(idx);
+    });
+
+    // --- Kick everything off -------------------------------------------------
+    loadSlides();
+  </script>
+</body>
+</html>
