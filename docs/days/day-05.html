@@ -1,0 +1,109 @@
+<section class="slide" data-day="5" data-title="Clamp & Round Speed" id="day-05">
+  <div class="slide-inner">
+    <!-- Top label (small text at very top) -->
+    <div class="slide-label">Day 5</div>
+
+    <!-- Main slide title -->
+    <h1>Clamp and Round a Speed Value</h1>
+
+    <!-- Optional topic tags (2–4 max is ideal) -->
+    <div class="tags">
+      <span class="tag tag--pink">Mathf</span>
+      <span class="tag tag--blue">Variables &amp; Data</span>
+      <span class="tag">Input</span>
+    </div>
+
+    <!-- Aim -->
+    <div class="subheading">Aim</div>
+    <p>
+      Use <code>Mathf.Clamp</code>, <code>Mathf.Round</code>, and <code>Mathf.Abs</code> to safely control a floating-point
+      value that represents a player speed. By the end of this task, you should understand how to keep values within
+      limits, round them for readability, and measure how far they are from a target.
+    </p>
+
+    <hr class="divider" />
+
+    <!-- Objectives / Pseudocode Breakdown -->
+    <div class="subheading">Objectives / Pseudocode Breakdown</div>
+    <ul>
+      <li>1. Make a new script called <code>MathfClampAndRound.cs</code> and attach it to an empty GameObject in the scene.</li>
+      <li>
+        2. Declare and initialise float fields to represent a speed and its allowed range.
+        <pre class="language-csharp"><code class="language-csharp">float currentSpeed = 0f;
+float minSpeed = 0f;
+float maxSpeed = 10f;
+float speedStep = 1.25f; // How much we change speed per key press</code></pre>
+      </li>
+      <li>
+        3. In <code>Start()</code>, log an initial summary of your speed values to the Console.
+        <ul>
+          <li>For example: <code>"Speed start: 0.00 (min 0, max 10)"</code>.</li>
+        </ul>
+      </li>
+      <li>
+        4. In <code>Update()</code>, respond to key presses to increase or decrease <code>currentSpeed</code>.
+        <ul>
+          <li>Use one key (e.g. up arrow) to add <code>speedStep</code>.</li>
+          <li>Use another key (e.g. down arrow) to subtract <code>speedStep</code>.</li>
+          <li>Use <code>Input.GetKeyDown(KeyCode.UpArrow)</code> and <code>Input.GetKeyDown(KeyCode.DownArrow)</code> so it only changes once per press.</li>
+        </ul>
+      </li>
+      <li>
+        5. After modifying <code>currentSpeed</code>, clamp it between <code>minSpeed</code> and <code>maxSpeed</code>.
+        <ul>
+          <li>Use <code>currentSpeed = Mathf.Clamp(currentSpeed, minSpeed, maxSpeed);</code></li>
+        </ul>
+      </li>
+      <li>
+        6. Round <code>currentSpeed</code> to two decimal places for display.
+        <ul>
+          <li>One common pattern is: <code>float rounded = Mathf.Round(currentSpeed * 100f) / 100f;</code></li>
+        </ul>
+      </li>
+      <li>
+        7. Use <code>Mathf.Abs</code> to calculate how far your speed is from the maximum.
+        <ul>
+          <li>For example: <code>float distanceFromMax = Mathf.Abs(maxSpeed - currentSpeed);</code></li>
+        </ul>
+      </li>
+      <li>
+        8. Log a single summary line each time the speed changes, including the rounded speed and distance from max.
+        <ul>
+          <li>Example format: <code>"Speed: 3.75 (distance from max: 6.25)"</code></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- right-aligned demo image or GIF -->
+    <aside class="demo-media">
+      <img src="images/default-screen-grab.gif" alt="Console showing clamped and rounded speed values updating as keys are pressed" />
+      <p class="demo-caption">
+        The Console shows clamped, rounded speed values and how far they are from the maximum as you tap the arrow keys.
+      </p>
+    </aside>
+
+    <!-- Did I Get It Right? -->
+    <div class="subheading">Did I Get It Right?</div>
+    <ul>
+      <li>Pressing your chosen increase/decrease keys should adjust the speed value up or down in clear steps.</li>
+      <li>
+        The behaviour should:
+        <ul>
+          <li>Never let the speed go below <code>minSpeed</code> or above <code>maxSpeed</code>, no matter how many times you press the keys.</li>
+          <li>Print a single summary line per key press, showing a rounded speed value.</li>
+          <li>Show a sensible distance-from-max number that reaches 0 when you hit the maximum speed.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Unity API Links -->
+    <div class="subheading">Unity API Links</div>
+    <ul>
+      <li><code>Mathf.Clamp</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Mathf.Round</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Round.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Mathf.Abs</code> — <a href="https://docs.unity3d.com/ScriptReference/Mathf.Abs.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Input.GetKeyDown</code> — <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>Debug.Log</code> — <a href="https://docs.unity3d.com/ScriptReference/Debug.Log.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+    </ul>
+  </div>
+</section>
