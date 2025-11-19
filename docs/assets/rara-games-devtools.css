@@ -191,3 +191,39 @@ pre[class*="language-"] {
   flex-direction: column;
   gap: 0.45rem;
 }
+
+/* Optional right-aligned demo media box on a slide */
+
+.demo-media {
+  float: right;
+  max-width: 260px;
+  margin: 0 0 1.5rem 1.75rem; /* space to the left + below */
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.demo-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.5rem;
+}
+
+.demo-caption {
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* On smaller screens, stack the demo under the main content */
+@media (max-width: 800px) {
+  .demo-media {
+    float: none;
+    max-width: 100%;
+    margin: 1.25rem 0 1.5rem;
+  }
+}
+
