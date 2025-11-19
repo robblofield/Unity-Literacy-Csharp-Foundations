@@ -1,0 +1,111 @@
+<section class="slide" data-day="4" data-title="Player Stats Summary" id="day-04">
+  <div class="slide-inner">
+    <!-- Top label (small text at very top) -->
+    <div class="slide-label">Day 4</div>
+
+    <!-- Main slide title -->
+    <h1>Player Stats Summary</h1>
+
+    <!-- Optional topic tags (2–4 max is ideal) -->
+    <div class="tags">
+      <span class="tag tag--pink">Variables &amp; Data</span>
+      <span class="tag tag--blue">Strings</span>
+      <span class="tag">Debugging</span>
+    </div>
+
+    <!-- Aim -->
+    <div class="subheading">Aim</div>
+    <p>
+      Build a simple "character sheet" in code by storing player stats as variables and combining them into a single, readable summary line in the Console.
+      By the end of this task, you should be comfortable using strings to represent grouped information.
+    </p>
+
+    <hr class="divider" />
+
+    <!-- Objectives / Pseudocode Breakdown -->
+    <div class="subheading">Objectives / Pseudocode Breakdown</div>
+    <ul>
+      <li>1. Make a new script called <code>PlayerStatsSummary.cs</code> and attach it to an empty GameObject in the scene.</li>
+      <li>
+        2. Declare and initialise fields for basic player stats.
+        <pre class="language-csharp"><code class="language-csharp">string playerName = "Nyx";
+int level = 1;
+int experience = 0;
+bool isAlive = true;</code></pre>
+      </li>
+      <li>
+        3. In <code>Start()</code>, build a single summary string that includes all of these values.
+        <ul>
+          <li>Choose a clear format, for example: <code>"Nyx - Lv 1 - XP: 0 - Alive: True"</code>.</li>
+          <li>Use either string concatenation (<code>+</code>) or string interpolation (<code>$"..."</code>).</li>
+        </ul>
+      </li>
+      <li>
+        4. Log this summary line to the Console using <code>Debug.Log</code>.
+      </li>
+      <li>
+        5. Still inside <code>Start()</code>, simulate a simple change to your stats.
+        <ul>
+          <li>For example: increase <code>level</code>, add some <code>experience</code>, or set <code>isAlive = false;</code>.</li>
+        </ul>
+      </li>
+      <li>
+        6. Build and log a second summary line after the change so you can compare "before" and "after" in the Console.
+      </li>
+    </ul>
+
+    <!-- Hints -->
+    <div class="subheading">Hints</div>
+    <ul>
+      <li>
+        Hint 1: String interpolation can make long summaries easier to read:
+        <code>$"{playerName} - Lv {level} - XP: {experience} - Alive: {isAlive}"</code>.
+        This is often clearer than lots of <code>+ "text"</code> concatenations.
+      </li>
+      <li>
+        Hint 2: Try to keep your formatting consistent so it looks like a neat line in the Console.
+        Imagine you are designing a tiny one-line character sheet.
+      </li>
+    </ul>
+
+    <hr class="divider" />
+
+ <!-- right-aligned demo image or GIF -->
+    <aside class="demo-media">
+      <img src="images/default-screen-grab.gif" alt="Console showing formatted player stats before and after an update" />
+      <p class="demo-caption">
+        The Console shows a before-and-after snapshot of the same player, with updated stats in a single formatted line.
+      </p>
+    </aside>
+    
+    <!-- Did I Get It Right? -->
+    <div class="subheading">Did I Get It Right?</div>
+    <ul>
+      <li>When you enter Play mode, you should see at least two lines printed in the Console.</li>
+      <li>
+        The lines should:
+        <ul>
+          <li>Show the same player name in both lines.</li>
+          <li>Show different stats in the second line (for example a higher level or more XP).</li>
+          <li>Use a consistent, readable format across both prints.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- right-aligned demo image or GIF -->
+    <aside class="demo-media">
+      <img src="images/default-screen-grab.gif" alt="Console showing formatted player stats before and after an update" />
+      <p class="demo-caption">
+        The Console shows a before-and-after snapshot of the same player, with updated stats in a single formatted line.
+      </p>
+    </aside>
+
+    <!-- Unity API Links -->
+    <div class="subheading">Unity API Links</div>
+    <ul>
+      <li><code>Debug.Log</code> — <a href="https://docs.unity3d.com/ScriptReference/Debug.Log.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>MonoBehaviour.Start</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+      <li><code>MonoBehaviour</code> — <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html" target="_blank" rel="noreferrer">Unity Docs</a></li>
+    </ul>
+  </div>
+</section>
