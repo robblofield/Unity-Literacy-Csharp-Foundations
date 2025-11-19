@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Marp Test Deck</title>
+  <style>
+    body { margin:0; font-family: sans-serif; }
+    section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    .slide-1 { background: #1e1e1e; color: white; }
+    .slide-2 { background: #fafafa; color: #222; }
+    .slide-3 { background: #dfe8ff; color: #111; }
+    pre {
+      background:#333;
+      color:#0f0;
+      padding:20px;
+      border-radius:8px;
+      width:80%;
+      overflow:auto;
+    }
+  </style>
+</head>
+<body>
+
+<section class="slide-1">
+  <h1>Test Marp-like Slide Deck</h1>
+  <p>This is only a static HTML mock to test GitHub Pages serving.</p>
+</section>
+
+<section class="slide-2">
+  <h2>Slide 2</h2>
+  <p>Content loads correctly if you see this.</p>
+</section>
+
+<section class="slide-3">
+  <h2>Slide with Code</h2>
+  <pre><code>public void Hello() {
+    Debug.Log("This simulates a code block");
+}</code></pre>
+</section>
+
+</body>
+</html>
